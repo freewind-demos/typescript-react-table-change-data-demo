@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 import {useTable} from 'react-table';
 import columnsDefs from './columnDefs';
-import {data} from './data';
+import {data1, data2} from './data';
 
 export default function Hello() {
+
+  const [data, setData] = useState(data1)
 
   const {
     getTableProps,
@@ -17,8 +19,13 @@ export default function Hello() {
     data
   })
 
+  function changeData() {
+    setData(data => data === data1 ? data2 : data1)
+  }
+
   return <div>
     <h1>Hello React-Table</h1>
+    <button onClick={changeData}>Change Data</button>
     <table {...getTableProps()}>
       <thead>
       {headerGroups.map(headerGroup => (
@@ -31,7 +38,7 @@ export default function Hello() {
       </thead>
       <tbody {...getTableBodyProps()}>
       {rows.map((row, i) => {
-        prepareRow(row)
+          prepareRow(row)
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map(cell => {

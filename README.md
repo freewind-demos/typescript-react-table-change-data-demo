@@ -1,5 +1,5 @@
-TypeScript React Table Demo
-=================================
+TypeScript React Table Change Data Demo
+========================================
 
 ```
 npm install
